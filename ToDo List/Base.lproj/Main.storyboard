@@ -19,23 +19,34 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="jWq-Lf-b6f" style="IBUITableViewCellStyleDefault" id="FYK-ZF-FFB">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="FYK-ZF-FFB" customClass="ListTableViewCell" customModule="ToDo_List" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FYK-ZF-FFB" id="hwZ-vq-6bE">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jWq-Lf-b6f">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vH-W9-FZD">
+                                                    <rect key="frame" x="59" y="11" width="246" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANb-om-G7e">
+                                                    <rect key="frame" x="20" y="11" width="24" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="rectangle" catalog="system"/>
+                                                    <state key="selected" image="checkmark.rectangle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="checkToggled:" destination="FYK-ZF-FFB" eventType="touchUpInside" id="W0K-Oc-p5x"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="checkBoxButton" destination="ANb-om-G7e" id="Abd-7k-CdX"/>
+                                            <outlet property="nameLabel" destination="2vH-W9-FZD" id="zK1-Bz-3oA"/>
                                             <segue destination="RqG-97-vy0" kind="show" identifier="ShowDetail" id="hXT-be-s6T"/>
                                         </connections>
                                     </tableViewCell>
@@ -77,7 +88,7 @@
             <objects>
                 <tableViewController id="RqG-97-vy0" customClass="ToDoDetailTableViewController" customModule="ToDo_List" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="u3d-Ds-43C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -91,7 +102,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-9Q-w7G">
-                                                    <rect key="frame" x="12" y="5" width="287" height="34"/>
+                                                    <rect key="frame" x="12" y="5" width="286" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -239,7 +250,11 @@
             <point key="canvasLocation" x="2171" y="-250"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark.rectangle" catalog="system" width="64" height="46"/>
+        <image name="rectangle" catalog="system" width="64" height="46"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aV5-vc-k7z"/>
+        <segue reference="hXT-be-s6T"/>
     </inferredMetricsTieBreakers>
 </document>
